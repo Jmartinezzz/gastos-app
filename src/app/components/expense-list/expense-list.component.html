@@ -1,0 +1,57 @@
+<div
+  class="d-flex align-items-center justify-content-between gap-2 flex-wrap mt-5 mb-5"
+>
+  <h2>Gastos</h2>
+  <div class="d-flex align-items-center flex-wrap gap-3 gap-sm-5">
+    <p class="m-0">
+      Total Gastado:
+      <span class="fw-bold ms-1"
+        ><i class="ri-arrow-down-s-fill text-danger"></i
+        >{{ total | currency }}</span
+      >
+    </p>
+    <a routerLink="/gastos/nuevo" class="btn btn-primary">Agregar Gastos</a>
+  </div>
+</div>
+
+<div class="table-responsive mb-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col" width="180">Fecha de gasto</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+        @if(expenses.length) {
+            @for(expense of expenses; track expense.id){
+            <tr>
+                <td>{{ expense.id }}</td>
+                <td>{{ expense.type }}</td>
+                <td>{{ expense.amount | currency }}</td>
+                <td>{{ expense.description }}</td>
+                <td>{{ expense.expense_date | date : "dd/MM/Y" }}</td>
+                <td class="table-data-action">
+                  <div>
+                    <a [routerLink]="['/gastos', expense.id, 'editar']"
+                      ><i class="ri-edit-box-line"></i
+                    ></a>
+                    <button (click)="deleteExpense(expense.id)" class="btn btn-link p-0">
+                      <i class="ri-delete-bin-2-line"></i>
+                    </button>
+                  </div>
+                </td>
+            </tr>
+            }
+        } @else {
+            <tr class="text-center">
+                <td class="text-center" colspan="6">No hay datos para mostrar</td>
+            </tr>
+        }
+    </tbody>
+  </table>
+</div>

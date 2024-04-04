@@ -19,7 +19,7 @@ export class ExpenseService {
     return this.http.get<Expense>(`${this.API_URL}/expenses/${id}`);
   }
 
-  createExpense(data: Expense) :Observable<Expense> {
+  createExpense(data: Expense):Observable<Expense> {
     return this.http.post<Expense>(`${this.API_URL}/expenses`, data);
   }
 

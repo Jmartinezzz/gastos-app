@@ -1,0 +1,12 @@
+.table-data-action > div {
+    a, button {
+        position: relative;
+        font-size: 1.05rem;
+        text-decoration:none;
+        transition: 0.3s;
+
+        &:hover {
+            transform: scale(1.5);
+        }
+    }
+}

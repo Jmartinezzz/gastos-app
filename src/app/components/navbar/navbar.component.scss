@@ -1,0 +1,29 @@
+.navbar {
+    background-color: black;
+    .navbar-brand {
+        font-weight: bold;
+        span {
+            color: lightblue;
+        }
+    }
+
+    .nav-link {
+        position: relative;
+        padding-left: 0.5rem;
+        &.active {
+            text-shadow: 0 0 6px rgba(52, 152, 219, 0.8);
+        }
+
+        &.active::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -2px;
+            transition: translateY(-50%);
+            display: inline-block;
+            height: 4px;
+            width: 4px;
+            border-radius: 50%;
+        }
+    }
+}
